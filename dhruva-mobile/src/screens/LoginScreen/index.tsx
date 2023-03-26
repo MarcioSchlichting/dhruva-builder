@@ -1,4 +1,5 @@
 import { View } from "react-native";
+import TextField from "../../components/TextField";
 import { translate } from "../../locales";
 
 const LoginScreen = () => {
@@ -10,11 +11,11 @@ const LoginScreen = () => {
     return (
         <View>
             {
-                // fields
-                //     .map((f, i) => <TextField 
-                //         label={f.label}
-                //         placeholder={f.placeholder}
-                //         />)
+                fields
+                    .map((f, i) => <TextField 
+                        label={f.label}
+                        placeholder={f.placeholder}
+                        />)
             }
         </View>
     );
