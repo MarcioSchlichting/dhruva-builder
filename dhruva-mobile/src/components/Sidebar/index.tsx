@@ -1,22 +1,16 @@
 import React from 'react'
-
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import ProfileScreen from '../../screens/ProfileScreen';
-import SettingsScreen from '../../screens/SettingsScreen';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const Drawer= createDrawerNavigator();
+import DrawerItems from '../../constants/DrawerItems';
 
-const Components = [
-    { name: 'Home', screen: ProfileScreen },
-    { name: 'Settings', screen: SettingsScreen }
-]
+const Drawer = createDrawerNavigator();
 
 const Sidebar = () => (
     <NavigationContainer>
         <Drawer.Navigator>
             {
-                Components
+                DrawerItems
                     .map((c,i) => <Drawer.Screen 
                         key={i} 
                         name={c.name} 

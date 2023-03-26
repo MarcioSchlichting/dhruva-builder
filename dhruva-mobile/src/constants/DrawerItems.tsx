@@ -1,30 +1,14 @@
+import ProfileScreen from "../screens/ProfileScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+
 type DrawerVO = {
     name: string
-    iconType: string
-    iconName: string
+    screen: () => JSX.Element
 }
 
 var items : DrawerVO[] = [
-    {
-        name:'Profile',
-        iconType:'Material',
-        iconName:'face-profile'
-    },
-    {
-        name:'Settings',
-        iconType:'Feather',
-        iconName:'settings'
-    },
-    {
-        name:'Saved Items',
-        iconType:'Material',
-        iconName:'bookmark-check-outline'
-    },
-    {
-        name:'Refer a Friend!',
-        iconType:'FontAwesome5',
-        iconName:'user-friends'
-    }
+    { name: 'Home', screen: ProfileScreen },
+    { name: 'Settings', screen: SettingsScreen }
 ]
 
 export default items;
