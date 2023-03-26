@@ -3,14 +3,16 @@ import { Button, View } from "react-native";
 import { useForm } from 'react-hook-form'
 
 import TextField from "../../components/TextField";
-import { translate } from "../../locales";
+import { useTranslation } from "react-i18next";
 
 const LoginScreen = () => {
+    const { t } = useTranslation()
+   console.log(t)
     const { register, setValue, handleSubmit } = useForm()
 
     const fields = [
-        { label: 'email', placeholder: translate('placeholders.email') },
-        { label: 'password', placeholder: translate('placeholders.password') }
+        { label: 'email', placeholder: t('placeholders.email') },
+        { label: 'password', placeholder: t('placeholders.password') }
     ]
 
     useEffect(() => {
@@ -31,7 +33,7 @@ const LoginScreen = () => {
             }
             <Button
                 onPress={() => {}} 
-                title={translate('placeholders.continue')}/>
+                title={t('placeholders.continue')}/>
         </View>);
 }
 
