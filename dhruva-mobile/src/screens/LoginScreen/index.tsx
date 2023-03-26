@@ -1,12 +1,22 @@
+import { useEffect } from "react";
 import { Button, View } from "react-native";
+import { useForm } from 'react-hook-form'
+
 import TextField from "../../components/TextField";
 import { translate } from "../../locales";
 
 const LoginScreen = () => {
+    const { register, setValue, handleSubmit } = useForm()
+
     const fields = [
-        { label: 'E-mail', placeholder: translate('placeholders.email') },
-        { label: 'Password', placeholder: translate('placeholders.password') }
+        { label: 'email', placeholder: translate('placeholders.email') },
+        { label: 'password', placeholder: translate('placeholders.password') }
     ]
+
+    useEffect(() => {
+        fields.
+            forEach(f => register(f.label))
+    }, [register])
 
     return (
         <View>
@@ -16,11 +26,13 @@ const LoginScreen = () => {
                         <TextField 
                             key={i}
                             label={f.label}
-                            placeholder={f.placeholder}/>)
+                            placeholder={f.placeholder}
+                            onChangeText={t => setValue(f.label, t)}/>)
             }
-            <Button/>
-        </View>
-    );
+            <Button
+                onPress={() => {}} 
+                title={translate('placeholders.continue')}/>
+        </View>);
 }
 
 export default LoginScreen;
