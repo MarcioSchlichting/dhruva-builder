@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button, View } from "react-native";
+import { Alert, Button, Text, View } from "react-native";
 import { useForm } from 'react-hook-form'
 
 import TextField from "../../components/TextField";
@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 const LoginScreen = () => {
     const { t } = useTranslation()
-   console.log(t)
     const { register, setValue, handleSubmit } = useForm()
 
     const fields = [
@@ -20,19 +19,21 @@ const LoginScreen = () => {
             forEach(f => register(f.label))
     }, [register])
 
+    const onSubmit = (data : any)=> Alert.alert(data.email, data.password)
+
     return (
-        <View>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             {
                 fields
-                    .map((f, i) => 
-                        <TextField 
-                            key={i}
-                            label={f.label}
-                            placeholder={f.placeholder}
-                            onChangeText={t => setValue(f.label, t)}/>)
+                .map((f, i) => 
+                    <TextField 
+                        key={i}
+                        label={f.label}
+                        placeholder={f.placeholder}
+                        onChangeText={t => setValue(f.label, t)}/>)
             }
-            <Button
-                onPress={() => {}} 
+            <Button 
+                onPress={handleSubmit(onSubmit) } 
                 title={t('placeholders.continue')}/>
         </View>);
 }
