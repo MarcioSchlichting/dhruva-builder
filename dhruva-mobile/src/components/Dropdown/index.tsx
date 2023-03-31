@@ -1,8 +1,11 @@
 import React, { 
+    ReactElement,
     useRef, 
     useState } from 'react';
+import { View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { DropdownItem } from './constants';
+import DropdownText from './DropdownText';
 
 type DropdownProps = {
     label: string
@@ -13,7 +16,7 @@ type DropdownProps = {
 const Dropdown = ({ 
     label, 
     items,
-    onSelect } : DropdownProps) => {
+    onSelect } : DropdownProps) : ReactElement<any, any> => {
     
     const DropdownButton = useRef()
 
@@ -26,12 +29,12 @@ const Dropdown = ({
 
     return (
         <TouchableOpacity
-            ref={DropdownButton}
             onPress={handleVisibility}>
             <View style={[{top: dropdownTop}]}>
                 <FlatList
                 data={items}
-                renderItem={renderItem}
+                renderItem={DropdownText}
+                keyExtractor={(_, index) => index.toString()}
                 />
             </View>
         </TouchableOpacity>
