@@ -30,8 +30,8 @@ const DropdownField = () => {
           maxHeight={300}
           labelField="label"
           valueField="value"
-          placeholder={!isFocused ? 'Select item' : '...'}
-          searchPlaceholder="Search..."
+          placeholder={!isFocused ? 'Select item' : '...'} // TODO: put the translate here.
+          searchPlaceholder="Search..." // TODO: put the translate here
           value={value}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
