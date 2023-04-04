@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useTranslation } from "react-i18next";
 
 const data = [
     { label: 'Item 1', value: '1' },
@@ -14,7 +15,9 @@ const data = [
     { label: 'Item 8', value: '8' },
 ];
 
+//TODO: We need add the values parameter below
 const DropdownField = () => {
+    const { t } = useTranslation()
     const [value, setValue] = useState<string>()
     const [isFocused, setIsFocused] = useState<boolean>(false)
 
@@ -30,8 +33,8 @@ const DropdownField = () => {
           maxHeight={300}
           labelField="label"
           valueField="value"
-          placeholder={!isFocused ? 'Select item' : '...'} // TODO: put the translate here.
-          searchPlaceholder="Search..." // TODO: put the translate here
+          placeholder={!isFocused ? t('placeholder.selectItem') as string : '...'}
+          searchPlaceholder={t('placeholder.search') as string}
           value={value}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
